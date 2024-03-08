@@ -1,1 +1,35 @@
-a
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <textarea id="searchTerm"></textarea>
+    <button onclick="getSong()">test</button>
+  </body>
+</html>
+
+<script>
+  async function getSong() {
+    var term = document.getElementById('')
+    const url =
+      "https://genius-song-lyrics1.p.rapidapi.com/search/multi/?q=weezer&per_page=3&page=1";
+    const options = {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": "ff5713dfb9msh78577e789c03837p1b0188jsnb1d54c5af289",
+        "X-RapidAPI-Host": "genius-song-lyrics1.p.rapidapi.com",
+      },
+    };
+
+    try {
+      const response = await fetch(url, options);
+      const result = await response.text();
+      console.log(JSON.parse(result));
+    } catch (error) {
+      console.error(error);
+    }
+  }
+</script>
